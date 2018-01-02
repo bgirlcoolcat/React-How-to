@@ -1,11 +1,12 @@
 import React from 'react';
 
-// In our component, we can access our props by interpolating with curly brackets, 
-// this.props, and then, the name of the prop that we're looking for (saved in our index.js file).
+// Outside of JSX, we don't need to interpolate that, so, can say, let txt = this.props.txt, 
+// and then in our JSX, I can just use that variable name txt.
 
 class App extends React.Component {
   render() {
-    return <h1>{this.props.txt}</h1>
+    let txt = this.props.txt
+    return <h1>{txt}</h1>
   }
 }
 
