@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
 
+// We can pass data into our components by using what's called props. Here, I've created a prop called txt.
 ReactDOM.render(
-    <App />, 
+    <App txt="this is the prop text"/>, 
     document.getElementById('root')
 );
-// registerServiceWorker();
