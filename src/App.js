@@ -10,13 +10,20 @@ class App extends React.Component {
     }
   }
 
-// To use state within our JSX, we interpolate it just like we do this.props, but this time, we're going to say, 
-// this.state, and then, the key that we're looking for, in this case, it's txt. 
-// We can see in the browser, we get 'this is the state txt'.
+  // State is meant to be managed and updated by our component. 
+  // I'm going to create a method here called "update" that takes in an event.
+
+  update(e) {
+    this.setState({txt: e.target.value})
+  }
 
   render() {
     return (
-      <h1>{this.state.txt}</h1>
+      <div>
+        <input type="text" 
+        onChange={this.update.bind(this)} />
+        <h1>{this.state.txt}</h1>
+      </div>
     )
   }
 }
