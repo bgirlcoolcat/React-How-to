@@ -1,28 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-// Outside of JSX, we don't need to interpolate that, so, can say, let txt = this.props.txt, 
-// and then in our JSX, I can just use that variable name txt.
+// Setting up state
 
 class App extends React.Component {
-  render() {
-    let txt = this.props.txt
-    return <h1>{txt}</h1>
+  constructor() {
+    super();
+    this.state = {
+      txt: 'this is the state txt'
+    }
   }
-}
 
-// You can catch a lot of bugs with type-checking. 
-// To run type-checking on the props for a component, you can assign the special propTypes property, including isRequired. 
+// To use state within our JSX, we interpolate it just like we do this.props, but this time, we're going to say, 
+// this.state, and then, the key that we're looking for, in this case, it's txt. 
+// We can see in the browser, we get 'this is the state txt'.
 
-App.propTypes = {
-  txt: PropTypes.string.isRequired
-}
-
-// We can also set a series of default properties by adding a property to our component called defaultProps.
-// In this example, if we remove the txt string text (in index.js), the default text is shown in the browser instead.
-
-App.defaultProps = {
-  txt: "this is the default txt"
+  render() {
+    return (
+      <h1>{this.state.txt}</h1>
+    )
+  }
 }
 
 export default App;
