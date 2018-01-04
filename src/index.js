@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import PostItState from './PostItState'
+import Board from './PostItState';
 
-
+// Step 7 - Refactor to properly use multiple child elements
 
 ReactDOM.render(
-    <div>
-        <PostItState>Note 1</PostItState>
-        <PostItState>Note 2</PostItState>
-        <PostItState>Note 3</PostItState>
-    </div>,
+
+    // Render the Board component instead
+
+    <Board />,
     document.getElementById('root')
 );
