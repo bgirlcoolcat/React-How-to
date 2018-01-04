@@ -17,12 +17,15 @@ class PostIt extends React.Component {
         alert('Removing comment');
     }
 
+// 4. We need to link the functions to the buttons.
+  // To do this, you add an onClick attribute to the button (button onClick={this.edit}).
+
     render() {
         return (
             <div className="commentContainer">
                 <div className="commentText">Your post it notes</div>
-                <button classname="button-primary">Edit</button>
-                <button className="button-danger">Remove</button>
+                <button onClick={this.edit} classname="button-primary">Edit</button>
+                <button onClick={this.remove} className="button-danger">Remove</button>
             </div>
         );
     }
