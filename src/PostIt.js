@@ -20,10 +20,14 @@ class PostIt extends React.Component {
 // 4. We need to link the functions to the buttons.
   // To do this, you add an onClick attribute to the button (button onClick={this.edit}).
 
+// 5. To access the data in-between the component tags in index.js, we use the children property.
+  // Written as (this.props.children)
+  // This replaces the commentText placeholder text.
+
     render() {
         return (
             <div className="commentContainer">
-                <div className="commentText">Your post it notes</div>
+                <div className="commentText">{this.props.children}</div>
                 <button onClick={this.edit} classname="button-primary">Edit</button>
                 <button onClick={this.remove} className="button-danger">Remove</button>
             </div>
