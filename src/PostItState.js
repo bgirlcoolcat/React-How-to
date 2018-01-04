@@ -24,13 +24,30 @@ class PostItState extends React.Component {
         this.setState({ editing: false });
     }
 
-    render() {
+// 4. Create two render functions to toggle between the default mode and editing mode
+
+    renderForm = () => {
+        return (
+            <div className="commentContainer">
+                <textarea defaultValue={this.props.children}></textarea>
+                <button onClick={this.save} classname="button-success">Save</button>
+            </div>
+        );
+    }
+
+    renderDefault = () => {
         return (
             <div className="commentContainer">
                 <div className="commentText">{this.props.children}</div>
                 <button onClick={this.edit} classname="button-primary">Edit</button>
                 <button onClick={this.remove} className="button-danger">Remove</button>
             </div>
+        );
+    }
+
+    render() {
+        return (
+            <h1>Placeholder text</h1>
         );
     }
 }
