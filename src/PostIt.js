@@ -6,6 +6,17 @@ import React from 'react';
 
 class PostIt extends React.Component {
 
+// 3. To be able to use the buttons, make your button functions. What the buttons should do when clicked on (Event Handling).
+  // These go inside the class component and are written as arrow functions.
+
+    edit = () => {
+        alert('Editing comment');
+    }
+
+    remove = () => {
+        alert('Removing comment');
+    }
+
     render() {
         return (
             <div className="commentContainer">
