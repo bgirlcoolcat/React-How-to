@@ -44,11 +44,14 @@ class PostItState extends React.Component {
             </div>
         );
     }
-
+ 
+// 5. Write some logic to say if in editing mode display renderForm; if in default mode, display renderDefault.
     render() {
-        return (
-            <h1>Placeholder text</h1>
-        );
+        if(this.state.editing) { 
+            return this.renderForm(); 
+        } else {
+            return this.renderDefault();
+        }
     }
 }
 
