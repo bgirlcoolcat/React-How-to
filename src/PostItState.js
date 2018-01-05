@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Step 10 - Calling functions from another component - you can pass functions as props
+
 class PostItState extends React.Component {
 
     state = { editing: false }
@@ -8,13 +10,18 @@ class PostItState extends React.Component {
         this.setState({ editing: true });
     }
 
+    // this.props.index is the id of the postit you are updating. 
+
     remove = () => {
-        console.log('Removing comment');
+        this.props.removePostItFromBoard(this.props.index);
     }
+
+    // we pass value, as this is the text from the edit box
+    // this.props.index is the id of the postit you are updating.
 
     save = () => {
         let value = this.refs.newText.value;
-        console.log('New postIt text:' + value);
+        this.props.updatePostItText(value, this.props.index);
         this.setState({ editing: false });
     }
 
@@ -56,13 +63,6 @@ class Board extends React.Component {
         ]
     }
 
-// Bucky cleans up the render function so map is no longer an anonymous function, but a named function.
-// Will do this, but no sure this is necessary going forward?
-
-    // Key is for React. So we set our own as index={i}.
-
-// Step 8 - Remove a postIt - see notes in Evernote for explanation of this approach.
-
     removePostIt = (i) => {
         console.log('Removing postIt: ' + i);
         let arr = this.state.postIts;
@@ -70,9 +70,18 @@ class Board extends React.Component {
         this.setState({postIts: arr});
     }
 
+    updatePostIt = (newText, i) => {
+        console.log('Updating postIt');
+        let arr = this.state.postIts;
+        arr[i] = newText;
+        this.setState({postIts: arr});
+    }
+
+    // For each comment, we want to pass in some new properties for the functions.
+
     eachComment = (item, i) => {
         return (
-            <PostItState key={i} index={i}>
+            <PostItState key={i} index={i} updatePostItText={this.updatePostIt} removePostItFromBoard={this.removePostIt}>
                 {item}
             </PostItState>);
     }
