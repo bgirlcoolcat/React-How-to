@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Step 7 - Refactor to properly use multiple child elements
-
 class PostItState extends React.Component {
 
     state = { editing: false }
@@ -48,11 +46,7 @@ class PostItState extends React.Component {
     }
 }
 
-// Set up a Board component, that holds all the post its.
-
 class Board extends React.Component {
-
-    // Have an initial state that is an array of each of the post its, and manage them in that way.
 
     state = {
         postIts: [
@@ -61,20 +55,32 @@ class Board extends React.Component {
             'I dig note 3'
         ]
     }
-    
-    // Make render function and create a div that represents the entire board.
+
+// Bucky cleans up the render function so map is no longer an anonymous function, but a named function.
+// Will do this, but no sure this is necessary going forward?
+
+    // Key is for React. So we set our own as index={i}.
+
+// Step 8 - Remove a postIt - see notes in Evernote for explanation of this approach.
+
+    removePostIt = (i) => {
+        console.log('Removing postIt: ' + i);
+        let arr = this.state.postIts;
+        arr.splice(i, 1);
+        this.setState({postIts: arr});
+    }
+
+    eachComment = (item, i) => {
+        return (
+            <PostItState key={i} index={i}>
+                {item}
+            </PostItState>);
+    }
 
     render() {
         return (
             <div className="board">
-                {
-                    // For each post it, I want to loop through the array of post its above 
-                    // and output each post it between the <PostItState></PostItState> tags
-                    // Have to set a key to give each post it/each child a unique identifier.
-                    this.state.postIts.map(function (item, i) {
-                        return (<PostItState key={i}>{item}</PostItState>);
-                    })
-                }
+                {this.state.postIts.map(this.eachComment)}
             </div>
         );
     }
