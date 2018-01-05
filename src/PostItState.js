@@ -1,6 +1,7 @@
 import React from 'react';
 
-// Step 10 - Calling functions from another component - you can pass functions as props
+// Step 11 - Creating new components
+// See Evernote notes for explanation of approach taken.
 
 class PostItState extends React.Component {
 
@@ -10,14 +11,9 @@ class PostItState extends React.Component {
         this.setState({ editing: true });
     }
 
-    // this.props.index is the id of the postit you are updating. 
-
     remove = () => {
         this.props.removePostItFromBoard(this.props.index);
     }
-
-    // we pass value, as this is the text from the edit box
-    // this.props.index is the id of the postit you are updating.
 
     save = () => {
         let value = this.refs.newText.value;
@@ -55,12 +51,20 @@ class PostItState extends React.Component {
 
 class Board extends React.Component {
 
+// 11b. Remove the hard-coded data for post its, so by default, no post it cards are shown.
+
     state = {
         postIts: [
-            'I like note 1',
-            'I love note 2',
-            'I dig note 3'
         ]
+    }
+
+// 11c. Create a new add function. 
+// 11d. Pass in some default text. This will be the text that we will set to this array item (above).
+
+    addPostIt = (text) => {
+        let arr = this.state.postIts;
+        arr.push(text);
+        this.setState({postIts: arr});
     }
 
     removePostIt = (i) => {
@@ -77,8 +81,6 @@ class Board extends React.Component {
         this.setState({postIts: arr});
     }
 
-    // For each comment, we want to pass in some new properties for the functions.
-
     eachComment = (item, i) => {
         return (
             <PostItState key={i} index={i} updatePostItText={this.updatePostIt} removePostItFromBoard={this.removePostIt}>
@@ -86,10 +88,17 @@ class Board extends React.Component {
             </PostItState>);
     }
 
+    // 11a. Add button added as HTML and board content housed in a div tag
+
+    // 11e. Add event handler to Add New button
+
     render() {
         return (
-            <div className="board">
-                {this.state.postIts.map(this.eachComment)}
+            <div>
+                <button onClick={this.addPostIt.bind(null, 'New post it')} className="buttonAdd">Add New</button>
+                <div className="board">
+                    {this.state.postIts.map(this.eachComment)}
+                </div>
             </div>
         );
     }

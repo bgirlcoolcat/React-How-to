@@ -47,3 +47,11 @@ button {
     margin-left: 10px;
     vertical-align: top;
 }
+
+.buttonAdd {
+    background-color: purple;
+    padding: 10px;
+    color: white;
+    border-style: none; 
+    margin: 10px 5px 10px 25px;
+}
