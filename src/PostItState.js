@@ -24,7 +24,7 @@ class PostItState extends React.Component {
         return (
             <div className="commentContainer">
                 <textarea ref="newText" defaultValue={this.props.children}></textarea>
-                <button onClick={this.save} className="button-success">Save</button>
+                <button onClick={this.save} className="buttonSave">Save</button>
             </div>
         );
     }
@@ -33,8 +33,8 @@ class PostItState extends React.Component {
         return (
             <div className="commentContainer">
                 <div className="commentText">{this.props.children}</div>
-                <button onClick={this.edit} className="button-primary">Edit</button>
-                <button onClick={this.remove} className="button-danger">Remove</button>
+                <button onClick={this.edit} className="buttonEdit">Edit</button>
+                <button onClick={this.remove} className="buttonRemove">Remove</button>
             </div>
         );
     }

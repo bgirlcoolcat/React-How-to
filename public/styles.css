@@ -1,0 +1,49 @@
+.board {
+    width: 25%;
+    padding: 10px;
+    background-color: lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+button {
+    border: none;
+    outline: none;
+}
+
+.commentContainer {
+    padding: 10px;
+    background-color: white;
+    margin: 15px;
+
+}
+
+.commentText {
+    color: black;
+}
+
+.buttonEdit {
+    background-color: blue;
+    padding: 10px;
+    color: white;
+    border-style: none; 
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.buttonRemove {
+    background-color: red;
+    padding: 10px;
+    color: white;
+    border-style: none; 
+    margin-top: 10px;
+}
+
+.buttonSave {
+    background-color: green;
+    padding: 10px;
+    color: white;
+    border-style: none; 
+    margin-left: 10px;
+    vertical-align: top;
+}
